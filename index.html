@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAKANEMA | Personal Site</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Kanit:wght@300;600&display=swap');
+        body { font-family: 'Kanit', sans-serif; background-color: #0a0a0a; color: #eeeeee; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .orange-glow { shadow-[0_0_20px_rgba(249,115,22,0.3)]; }
+        .page { display: none; }
+        .page.active { display: block; }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <nav class="fixed top-0 w-full z-50 bg-[#0a0a0a]/90 backdrop-blur-md border-b-2 border-[#f97316] px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div class="w-3 h-3 bg-[#f97316] animate-pulse"></div>
+            <span class="text-[#f97316] font-black text-xl tracking-tighter mono">MAKANEMA.SYS</span>
+        </div>
+        <button onclick="toggleMenu()" class="z-50 space-y-1.5">
+            <div id="line1" class="w-8 h-1 bg-[#f97316] transition-all"></div>
+            <div id="line2" class="w-8 h-1 bg-[#f97316]"></div>
+            <div id="line3" class="w-8 h-1 bg-[#f97316] transition-all"></div>
+        </button>
+    </nav>
+
+    <div id="menu" class="fixed inset-0 bg-black/95 z-40 hidden flex-col items-center justify-center gap-8 text-3xl font-bold italic">
+        <a href="#" onclick="showPage('home')" class="hover:text-[#f97316] transition-colors">HOME</a>
+        <a href="#" onclick="showPage('blog')" class="hover:text-[#f97316] transition-colors">BLOG</a>
+        <a href="#" onclick="showPage('projects')" class="hover:text-[#f97316] transition-colors">PROJECTS</a>
+        <a href="#" onclick="showPage('about')" class="hover:text-[#f97316] transition-colors">ABOUT</a>
+    </div>
+
+    <main class="mt-20">
+        
+        <section id="home" class="page active min-h-screen flex flex-col items-center justify-center p-6 text-center">
+            <img src="Logo.png" alt="Logo" class="w-48 h-48 rounded-full border-4 border-[#f97316] mb-8 shadow-lg shadow-[#f97316]/20">
+            <h1 class="text-5xl font-black italic mb-2 text-white uppercase">Hello, I am <span class="text-[#f97316]">Maka</span></h1>
+            <p class="mono text-gray-400 mb-6">Welcome to Personal Site for me</p>
+            <div class="w-20 h-1 bg-[#f97316] mb-6"></div>
+            <p class="text-xl">สวัสดีครับ ผมชื่อมากะ ยินดีต้อนรับสู่เว็บส่วนตัวของผมนะครับ</p>
+        </section>
+
+        <section id="blog" class="page min-h-screen p-8 max-w-5xl mx-auto">
+            <div class="border-l-4 border-[#f97316] pl-4 mb-10">
+                <h2 class="text-3xl font-bold italic">MY GEARS & SPECS</h2>
+                <p class="mono text-[#f97316] text-sm">LAST_UPDATE: 14_MAR_2026</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-[#111] border border-gray-800 p-4 rounded-lg">
+                    <img src="dt.png" class="w-full h-48 object-cover rounded mb-4 border border-gray-700">
+                    <h3 class="text-[#f97316] font-bold text-xl mb-4 italic underline">Desktop NongBeta</h3>
+                    <ul class="mono text-xs text-gray-400 space-y-1">
+                        <li>> CPU : intel Core i3-7100 2c/4t 3.9GHz</li>
+                        <li>> RAM : 8GB DDR4 2133MHz T-Force Vulcan-Z</li>
+                        <li>> MB : GIGABYTE H110M-DS2 Rev1.2</li>
+                        <li>> GPU : Galax Geforce GT 1030 2GB GDDR5</li>
+                        <li>> OS : ZorinOS 18 Core</li>
+                        <li class="text-gray-600 italic">...and more specs</li>
+                    </ul>
+                </div>
+                <div class="bg-[#111] border border-gray-800 p-4 rounded-lg">
+                    <img src="mnt.png" class="w-full h-48 object-cover rounded mb-4 border border-gray-700">
+                    <h3 class="text-[#f97316] font-bold text-xl mb-4 italic underline">Monitor</h3>
+                    <p class="mono text-sm text-gray-400">> Model : Compaq HD+ (1600x900) 60Hz</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="page min-h-screen flex flex-col items-center justify-center">
+            <div class="bg-[#f97316] text-black px-6 py-3 font-black text-2xl skew-x-[-12deg] animate-pulse">
+                PENDING UPDATE
+            </div>
+            <p class="mt-4 mono tracking-widest text-gray-500 italic">アップデート待ち</p>
+        </section>
+
+        <section id="about" class="page min-h-screen p-8 max-w-2xl mx-auto text-center">
+            <h2 class="text-3xl font-black mb-12 italic border-b-2 border-[#f97316] inline-block">SOCIAL_CONNECT</h2>
+            <div class="flex flex-col gap-4">
+                <a href="https://youtube.com/@makanemachan" target="_blank" class="p-4 bg-[#111] border-l-4 border-gray-600 hover:border-[#f97316] font-bold transition-all">YOUTUBE: MakanemaMMD</a>
+                <a href="https://x.com/MaxGuMu" target="_blank" class="p-4 bg-[#111] border-l-4 border-gray-600 hover:border-[#f97316] font-bold transition-all">X (TWITTER)</a>
+                <a href="https://www.tiktok.com/@makanemamaxy" target="_blank" class="p-4 bg-[#111] border-l-4 border-gray-600 hover:border-[#f97316] font-bold transition-all">TIKTOK</a>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const isHidden = menu.classList.contains('hidden');
+            if (isHidden) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+            }
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            toggleMenu();
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
