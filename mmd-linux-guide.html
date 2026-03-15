@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMD Linux Guide | MAKANEMA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Kanit:wght@300;400;600&display=swap');
+        body { font-family: 'Kanit', sans-serif; background-color: #0a0a0a; color: #eee; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .lang-label { font-size: 10px; font-weight: bold; padding: 2px 6px; background: #f97316; color: black; margin-right: 5px; border-radius: 2px; }
+        .step-card { background: #111; border-left: 4px solid #f97316; padding: 20px; margin-bottom: 30px; }
+        .cmd-box { background: #000; padding: 15px; border: 1px solid #333; color: #00ff00; font-family: monospace; margin: 10px 0; position: relative; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <header class="p-6 border-b-2 border-[#f97316] flex justify-between items-center bg-black/50 sticky top-0 z-50 backdrop-blur-md">
+        <a href="index.html" class="text-[#f97316] font-bold underline italic hover:text-white transition-all">< BACK TO HOME</a>
+        <div class="mono text-xs text-gray-500 uppercase">System: Linux_MMD_Setup_v1.0</div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 pt-12">
+        
+        <div class="mb-12">
+            <h1 class="text-4xl font-black text-[#f97316] italic mb-4 uppercase">How to run MMD on Linux (64-bit)</h1>
+            <div class="space-y-2 text-sm">
+                <p><span class="lang-label">TH</span> คู่มือการลง MMD สำหรับ Ubuntu 24.04.3 LTS, ZorinOS 18 และ Linux Mint 22.3+</p>
+                <p><span class="lang-label">EN</span> MMD Installation guide for Ubuntu-based Linux distros.</p>
+                <p><span class="lang-label">JP</span> LinuxでMMD（64bit）を動作させる方法。Ubuntu/ZorinOS対応。</p>
+            </div>
+        </div>
+
+        <div class="bg-red-900/20 border-2 border-red-600 p-6 mb-10 rounded-lg">
+            <h3 class="font-bold text-red-500 mb-2 underline">⚠️ IMPORTANT / 重要 / ข้อควรระวัง</h3>
+            <p class="text-sm italic">
+                (TH) MMD 64-bit ไม่รองรับการแตกไฟล์ขณะเรนเดอร์ แนะนำให้ใช้ Avi Raw หรือ MJPEG เท่านั้น!<br>
+                (EN) 64-bit version does not support compressed AVI. Use Avi Raw or MJPEG only.<br>
+                (JP) 64bit版はAVI圧縮に対応していません。Avi RawまたはMJPEGを使用してください。
+            </p>
+        </div>
+
+        <div class="step-card">
+            <h2 class="text-2xl font-bold text-[#f97316] mb-4">STEP 1: Install Wine (Staging) & Wintricks</h2>
+            <img src="bg1.png" class="w-full h-auto mb-4 border border-gray-800 rounded">
+            <p class="text-sm text-gray-400 mb-4">ติดตั้ง Wine เวอร์ชั่นล่าสุดเพื่อให้รองรับโปรแกรม Windows</p>
+            <div class="cmd-box">
+                sudo dpkg --add-architecture i386 <br>
+                sudo mkdir -pm 755 /etc/apt/keyrings <br>
+                sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key <br>
+                sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/noble/winehq-noble.sources <br>
+                sudo apt update && sudo apt install --install-recommends winehq-staging winetricks -y
+            </div>
+        </div>
+
+        <div class="step-card">
+            <h2 class="text-2xl font-bold text-[#f97316] mb-4">STEP 2: Download Automation Script</h2>
+            <p class="mb-4">คลิกปุ่มด้านล่างเพื่อโหลดไฟล์สคริปต์ติดตั้งอัตโนมัติ</p>
+            <a href="installmmd64.sh" download class="inline-block bg-[#f97316] text-black font-black px-8 py-4 mb-4 hover:bg-white transition-all">
+                DOWNLOAD installmmd64.sh
+            </a>
+        </div>
+
+        <div class="step-card">
+            <h2 class="text-2xl font-bold text-[#f97316] mb-4">STEP 3: Lutris & MMD Configuration</h2>
+            <img src="bg2.png" class="w-full h-auto mb-4 border border-gray-800 rounded">
+            <ul class="list-disc pl-5 space-y-4 text-sm text-gray-300">
+                <li>
+                    <strong>TH:</strong> ติดตั้ง Lutris และสร้าง Prefix ใหม่ที่ <code>~/.WineMMD64</code><br>
+                    <strong>EN:</strong> Open Lutris, create a new Wine prefix at <code>~/.WineMMD64</code>
+                </li>
+                <li>
+                    <strong>TH:</strong> เลือกไฟล์ MMD ที่โหลดมา (เช่น <code>MikuMikuDance_V932x64</code>)<br>
+                    <strong>EN:</strong> Select MMD main folder <code>MikuMikuDance_V932x64</code>
+                </li>
+            </ul>
+        </div>
+
+        <div class="step-card">
+            <h2 class="text-2xl font-bold text-[#f97316] mb-4">STEP 4: MME & Video Conversion (FFmpeg)</h2>
+            <img src="bg3.png" class="w-full h-auto mb-4 border border-gray-800 rounded">
+            <p class="mb-4 italic">ลง MME64 โดยการก๊อปปี้ไฟล์ d3d9.dll ไปวางที่เดียวกับ MMD.exe</p>
+            <div class="cmd-box">
+                sudo apt install ffmpeg -y
+            </div>
+            <p class="text-xs text-gray-500 mt-2">
+                Use command: <code>ffmpeg -i input.avi -vcodec libx264 -crf 18 output.mp4</code>
+            </p>
+        </div>
+
+    </main>
+
+    <footer class="text-center p-10 mono text-[10px] text-gray-600 border-t border-gray-900">
+        AUTHOR: MAKA // SYSTEM: ZORINOS_18_CORE // 2026
+    </footer>
+
+</body>
+  </html>
+    
