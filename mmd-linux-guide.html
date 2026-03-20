@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MMD Linux Guide | MAKANEMA</title>
+    <title>MMD & PMX Linux Guide | MAKANEMA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Kanit:wght@300;400;600&display=swap');
@@ -14,32 +14,33 @@
         .cmd-box { background: #000; padding: 15px; border: 1px solid #333; color: #f97316; font-family: 'JetBrains Mono', monospace; margin: 12px 0; position: relative; font-size: 14px; line-height: 1.6; }
         .cmd-box::before { content: "TERMINAL_CMD"; position: absolute; top: -10px; right: 10px; background: #333; color: #aaa; font-size: 10px; padding: 0 5px; }
         .highlight-orange { color: #f97316; font-weight: bold; }
+        .section-divider { border-top: 2px dashed #333; margin: 60px 0; position: relative; }
+        .section-divider::after { content: "NEXT_MODULE"; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #0a0a0a; padding: 0 15px; color: #f97316; font-size: 12px; font-weight: bold; }
     </style>
 </head>
 <body class="pb-20">
 
     <header class="p-6 border-b-2 border-[#f97316] flex justify-between items-center bg-black/50 sticky top-0 z-50 backdrop-blur-md">
         <a href="index.html" class="text-[#f97316] font-bold underline italic hover:text-white transition-all tracking-tighter">< BACK TO HOME</a>
-        <div class="mono text-xs text-gray-500 uppercase font-bold">Project: MMD_LINUX_DEPLOY_2026</div>
+        <div class="mono text-xs text-gray-500 uppercase font-bold">Project: MMD_PMX_LINUX_DEPLOY_2026</div>
     </header>
 
     <main class="max-w-4xl mx-auto px-6 pt-12">
         
         <div class="mb-12">
-            <h1 class="text-4xl font-black text-[#f97316] italic mb-4 uppercase tracking-tight">How to run MMD on Linux (64-bit)</h1>
+            <h1 class="text-4xl font-black text-[#f97316] italic mb-4 uppercase tracking-tight">MMD & PMX Editor Linux Setup</h1>
             <div class="space-y-3 text-sm border-l-2 border-gray-800 pl-4">
-                <p><span class="lang-label">TH</span> คู่มือการลง MMD สำหรับ Ubuntu 24.04.3 LTS, ZorinOS 18 และ Linux Mint 22.3+</p>
-                <p><span class="lang-label">EN</span> Comprehensive MMD installation guide for modern Ubuntu-based systems.</p>
-                <p><span class="lang-label">JP</span> 最新のUbuntu/ZorinOS環境でMMD（64bit）をセットアップするための詳細ガイド。</p>
+                <p><span class="lang-label">TH</span> คู่มือการลง MMD และ PMX Editor สำหรับ Ubuntu 24.04.3 LTS, ZorinOS 18 และ Linux Mint 22.3+</p>
+                <p><span class="lang-label">EN</span> Full installation guide for MMD & PMX Editor on modern Ubuntu-based systems.</p>
+                <p><span class="lang-label">JP</span> Linux（ZorinOS/Ubuntu）環境でMMDとPMX Editorをセットアップする完全ガイド。</p>
             </div>
         </div>
 
-        <div class="bg-red-900/10 border-2 border-red-600 p-6 mb-10 rounded-lg shadow-[0_0_20px_rgba(220,38,38,0.15)]">
+        <div class="bg-red-900/10 border-2 border-red-600 p-6 mb-10 rounded-lg">
             <h3 class="font-bold text-red-500 mb-2 underline italic">⚠️ CRITICAL NOTICE / 重要事項 / ข้อควรระวัง</h3>
-            <div class="text-sm space-y-2 text-red-200/80">
-                <p><strong>TH:</strong> เวอร์ชั่น 64-bit ไม่รองรับการแตกไฟล์ขณะเรนเดอร์ (Video Compression) แนะนำให้ใช้ Avi Raw หรือ MJPEG เท่านั้น!</p>
-                <p><strong>EN:</strong> 64-bit version lacks internal video compression support. Export using Avi Raw or MJPEG only.</p>
-                <p><strong>JP:</strong> 64bit版はビデオ圧縮に対応していません。Avi RawまたはMJPEG形式のみを使用してください。</p>
+            <div class="text-sm space-y-2 text-red-200/80 italic">
+                <p>(TH) MMD 64-bit ไม่รองรับการแตกไฟล์ขณะเรนเดอร์ แนะนำให้ใช้ Avi Raw หรือ MJPEG เท่านั้น!</p>
+                <p>(JP) 64bit版はAVI圧縮に対応していません。Avi RawまたはMJPEGを使用してください。</p>
             </div>
         </div>
 
@@ -49,11 +50,6 @@
                 <h2 class="text-2xl font-bold text-white uppercase italic">Initial Environment Setup</h2>
             </div>
             <img src="bg1.png" class="w-full h-auto mb-6 border border-gray-800 rounded">
-            <div class="space-y-2 mb-4 text-sm text-gray-300">
-                <p><span class="lang-label">TH</span> ติดตั้ง Wine (Staging) และ Wintricks เวอร์ชั่นล่าสุดเพื่อรองรับแอปพลิเคชัน Windows</p>
-                <p><span class="lang-label">EN</span> Install the latest Wine (Staging) and Wintricks for Windows app compatibility.</p>
-                <p><span class="lang-label">JP</span> 最新のWine (Staging) と Wintricks をシステムに導入します。</p>
-            </div>
             <div class="cmd-box">
                 sudo dpkg --add-architecture i386 <br>
                 sudo mkdir -pm 755 /etc/apt/keyrings <br>
@@ -66,127 +62,90 @@
         <div class="step-card">
             <div class="flex items-center gap-3 mb-4">
                 <span class="bg-[#f97316] text-black font-black px-2 py-1">02</span>
-                <h2 class="text-2xl font-bold text-white uppercase italic">Download Automation Script</h2>
+                <h2 class="text-2xl font-bold text-white uppercase italic">MMD 64-bit Installation</h2>
             </div>
-            <div class="space-y-2 mb-6 text-sm text-gray-300">
-                <p><span class="lang-label">TH</span> ดาวน์โหลดสคริปต์ติดตั้งอัตโนมัติ <code>installmmd64.sh</code></p>
-                <p><span class="lang-label">EN</span> Download the <code>installmmd64.sh</code> automation script.</p>
-                <p><span class="lang-label">JP</span> 自動インストールスクリプト <code>installmmd64.sh</code> を取得します。</p>
+            <p class="text-sm mb-4"><span class="lang-label">TH</span> ดาวน์โหลดและรันสคริปต์ <code>installmmd64.sh</code></p>
+            <a href="installmmd64.sh" download class="inline-block bg-[#f97316] text-black font-black px-6 py-3 mb-4 hover:bg-white transition-all">DOWNLOAD installmmd64.sh</a>
+            <div class="cmd-box">
+                chmod +x installmmd64.sh && ./installmmd64.sh
             </div>
-            <a href="installmmd64.sh" download class="inline-block bg-[#f97316] text-black font-black px-8 py-4 border-2 border-[#f97316] hover:bg-transparent hover:text-[#f97316] transition-all duration-300">
-                DOWNLOAD installmmd64.sh
-            </a>
+            <div class="bg-black/40 p-4 border-l-2 border-white mt-4 text-xs space-y-2">
+                <p class="font-bold text-[#f97316] uppercase">[Lutris Config]</p>
+                <p>1. <strong>Executable:</strong> MikuMikuDance.exe</p>
+                <p>2. <strong>Working Directory:</strong> Folder MikuMikuDance</p>
+                <p>3. <strong>Wine Prefix:</strong> .WineMMD64</p>
+                <p>4. <strong>Wine Version:</strong> <span class="highlight-orange">WineHQ Staging 11.4</span> (ห้ามเลือก Default!)</p>
+            </div>
         </div>
 
-        <div class="step-card border-orange-500">
+        <div class="section-divider"></div>
+
+        <div class="step-card border-[#f97316]">
             <div class="flex items-center gap-3 mb-4">
                 <span class="bg-[#f97316] text-black font-black px-2 py-1">03</span>
-                <h2 class="text-2xl font-bold text-white uppercase italic">Execute & Lutris Configuration</h2>
+                <h2 class="text-2xl font-bold text-white uppercase italic">PMX Editor Installation</h2>
             </div>
-            <img src="bg2.png" class="w-full h-auto mb-6 border border-gray-800 rounded shadow-[0_0_15px_rgba(249,115,22,0.1)]">
+            <img src="pmx1.png" class="w-full h-auto mb-6 border border-gray-800 rounded">
             
-            <div class="space-y-6 text-sm text-gray-300">
-                <div class="bg-black/40 p-4 border-l-2 border-[#f97316]">
-                    <p class="font-bold text-white uppercase mb-2">1. Running the Script / スクリプトの実行</p>
-                    <p><span class="lang-label">TH</span> เปิด Terminal ในโฟลเดอร์ที่โหลดสคริปต์ไว้ แล้วรันคำสั่งเพื่อแตกไฟล์และสร้าง Prefix</p>
-                    <p><span class="lang-label">EN</span> Open terminal in the download folder and run the command to extract files and create prefix.</p>
-                    <p><span class="lang-label">JP</span> スクリプトフォルダでターミナルを開き、コマンドを実行してPrefixを作成します。</p>
-                    <div class="cmd-box">
-                        chmod +x installmmd64.sh <br>
-                        ./installmmd64.sh
-                    </div>
-                </div>
+            <div class="space-y-4 mb-6">
+                <p><span class="lang-label">TH</span> ดาวน์โหลดสคริปต์ <code>installPMXEditor.sh</code> เพื่อเตรียมสภาพแวดล้อมสำหรับ PMX Editor</p>
+                <p><span class="lang-label">JP</span> PMX Editor用のインストールスクリプト <code>installPMXEditor.sh</code> をダウンロードします。</p>
+            </div>
 
-                <div class="bg-black/40 p-4 border-l-2 border-white">
-                    <p class="font-bold text-[#f97316] uppercase mb-4 underline italic">2. Lutris App Setup (Step-by-Step)</p>
-                    
-                    <div class="space-y-6">
-                        <div>
-                            <p class="text-white font-bold mb-1">A. Add Game / アプリの追加:</p>
-                            <p class="text-xs">
-                                <span class="lang-label">TH</span> กดปุ่ม <span class="highlight-orange">+</span> ใน Lutris > เลือก <span class="highlight-orange">Add locally installed game</span> > ตั้งชื่อเกม > เลือก Runner เป็น <span class="highlight-orange">Wine</span>
-                            </p>
-                            <p class="text-xs mt-1">
-                                <span class="lang-label">EN</span> Click <span class="highlight-orange">+</span> > <span class="highlight-orange">Add locally installed game</span> > Name your game > Set Runner to <span class="highlight-orange">Wine</span>.
-                            </p>
-                            <p class="text-xs mt-1">
-                                <span class="lang-label">JP</span> <span class="highlight-orange">+</span> を押す > <span class="highlight-orange">Add locally installed game</span> を選択 > 名前入力 > Runnerを <span class="highlight-orange">Wine</span> に設定。
-                            </p>
-                        </div>
+            <a href="installPMXEditor.sh" download class="inline-block bg-[#f97316] text-black font-black px-6 py-3 mb-4 hover:bg-white transition-all shadow-[5px_5px_0px_white]">
+                DOWNLOAD installPMXEditor.sh
+            </a>
 
-                        <div class="bg-[#1a1a1a] p-3 border border-gray-800">
-                            <p class="text-white font-bold mb-2 text-xs uppercase underline">B. Game Options / ゲームオプション:</p>
-                            <ul class="space-y-3 text-[11px] mono">
-                                <li>
-                                    <span class="text-[#f97316]">[Executable]</span><br>
-                                    TH: เลือกไฟล์ <span class="text-white">MikuMikuDance.exe</span> ในโฟลเดอร์ MMD<br>
-                                    JP: <span class="text-white">MikuMikuDance.exe</span> ファイルを選択。
-                                </li>
-                                <li>
-                                    <span class="text-[#f97316]">[Working directory]</span><br>
-                                    TH: เลือกโฟลเดอร์หลักของ <span class="text-white">MikuMikuDance</span><br>
-                                    JP: <span class="text-white">MikuMikuDance</span> のメインフォルダを選択。
-                                </li>
-                                <li>
-                                    <span class="text-[#f97316]">[Wine prefix]</span><br>
-                                    TH: เลือกโฟลเดอร์ <span class="text-white">.WineMMD64</span> (ที่รันแตกออกมาจากสคริปต์)<br>
-                                    JP: スクリプトで作成された <span class="text-white">.WineMMD64</span> フォルダを選択。
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="bg-orange-600/10 p-4 border border-orange-600/50">
-                            <p class="text-white font-bold mb-1 underline">🚨 RUNNER OPTIONS (CRITICAL):</p>
-                            <p class="text-xs leading-relaxed">
-                                <span class="lang-label">TH</span> ในช่อง <span class="highlight-orange">Wine version</span> **ห้ามเลือก (Default)** ให้เจาะจงเลือกเป็น <span class="highlight-orange font-black underline">WineHQ Staging 11.4</span>
-                            </p>
-                            <p class="text-xs mt-2 leading-relaxed">
-                                <span class="lang-label">EN</span> For <span class="highlight-orange">Wine version</span>, **DO NOT select (Default)**. Specifically choose <span class="highlight-orange font-black underline">WineHQ Staging 11.4</span>.
-                            </p>
-                            <p class="text-xs mt-2 leading-relaxed">
-                                <span class="lang-label">JP</span> <span class="highlight-orange">Wine version</span> 項目で **(Default) を選択しないでください**。必ず <span class="highlight-orange font-black underline">WineHQ Staging 11.4</span> を指定してください。
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            <div class="cmd-box">
+                chmod +x installPMXEditor.sh <br>
+                ./installPMXEditor.sh
             </div>
         </div>
 
         <div class="step-card">
             <div class="flex items-center gap-3 mb-4">
                 <span class="bg-[#f97316] text-black font-black px-2 py-1">04</span>
-                <h2 class="text-2xl font-bold text-white uppercase italic">MME64 & FFmpeg Engine</h2>
+                <h2 class="text-2xl font-bold text-white uppercase italic">Lutris Config for PMX</h2>
             </div>
-            <img src="bg3.png" class="w-full h-auto mb-6 border border-gray-800 rounded">
+            <img src="pmx2.png" class="w-full h-auto mb-6 border border-gray-800 rounded">
             
-            <div class="space-y-4 text-sm text-gray-300">
-                <p>
-                    <span class="lang-label">TH</span> ลง MME64: ก๊อปปี้ไฟล์ <code>d3d9.dll</code> ไปวางในโฟลเดอร์ <code>MMD.exe</code> และติดตั้ง FFmpeg เพื่อแปลงไฟล์
-                </p>
-                <p>
-                    <span class="lang-label">EN</span> Install MME64: Copy <code>d3d9.dll</code> to the <code>MMD.exe</code> directory and install FFmpeg.
-                </p>
-                <p>
-                    <span class="lang-label">JP</span> MME64の導入: <code>d3d9.dll</code> を <code>MMD.exe</code> と同じディレクトリに配置し、FFmpegをインストールします。
-                </p>
-            </div>
+            <div class="bg-[#1a1a1a] p-5 border-l-4 border-white space-y-6">
+                <div class="space-y-3 text-xs mono">
+                    <p class="text-[#f97316] font-bold uppercase underline italic">Lutris Settings / 設定:</p>
+                    <p>> [Executable]: <span class="text-white font-bold">PMXEditor.exe</span></p>
+                    <p>> [Working directory]: <span class="text-white font-bold">โฟลเดอร์หลักของ PMXEditor</span></p>
+                    <p>> [Wine prefix]: <span class="text-white font-bold">.WinePMX</span> (แตกมาจากสคริปต์)</p>
+                </div>
 
+                <div class="bg-orange-600/10 p-4 border border-orange-600/50">
+                    <p class="text-white font-bold mb-2 underline uppercase">🚨 Compatibility / 互換性:</p>
+                    <p class="text-[12px] leading-relaxed">
+                        <span class="lang-label">TH</span> ในหน้า Configure > Runner options เลือก <span class="highlight-orange">Wine version</span> เป็น <span class="highlight-orange font-black underline">WineHQ Staging 11.4</span> เท่านั้น! **ห้ามใช้ตัว (Default)**
+                    </p>
+                    <p class="text-[12px] mt-2 leading-relaxed">
+                        <span class="lang-label">JP</span> Runner optionsの <span class="highlight-orange">Wine version</span> で必ず <span class="highlight-orange font-black underline">WineHQ Staging 11.4</span> を選択してください。**(Default) は使用禁止**。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-[#f97316] text-black font-black px-2 py-1">05</span>
+                <h2 class="text-2xl font-bold text-white uppercase italic">FFmpeg Video Engine</h2>
+            </div>
             <div class="cmd-box">
                 sudo apt install ffmpeg -y
             </div>
-            
-            <div class="mt-4 p-4 bg-black border border-gray-800">
-                <p class="text-[#f97316] font-bold mb-2 uppercase text-[12px]">Conversion Command / 変換コマンド:</p>
-                <code class="text-gray-400 block text-xs overflow-x-auto whitespace-nowrap">ffmpeg -i input.avi -vcodec libx264 -crf 18 output.mp4</code>
-            </div>
+            <p class="text-[10px] text-gray-500 italic mt-2">Convert AVI to MP4: ffmpeg -i input.avi -vcodec libx264 -crf 18 output.mp4</p>
         </div>
 
     </main>
 
     <footer class="text-center p-10 mono text-[10px] text-gray-600 border-t border-gray-900 mt-20">
-        AUTHOR: MAKA // SYSTEM: ZORINOS_18_CORE // 2026 // BELOBOG HEAVY INDUSTRIES
+        AUTHOR: MAKA // SYSTEM: ZORINOS_18_CORE // 2026 // BELOBOG INDUSTRIES
     </footer>
 
 </body>
-                       </html>
-                       
+        </html>
+            
