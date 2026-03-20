@@ -88,9 +88,9 @@
             <div class="space-y-6 text-sm text-gray-300">
                 <div class="bg-black/40 p-4 border-l-2 border-[#f97316]">
                     <p class="font-bold text-white uppercase mb-2">1. Running the Script / スクリプトの実行</p>
-                    <p><span class="lang-label">TH</span> เปิด Terminal ในโฟลเดอร์ที่ดาวน์โหลดสคริปต์ไว้ แล้วรันคำสั่งด้านล่าง</p>
-                    <p><span class="lang-label">EN</span> Open your terminal in the script directory and execute these commands.</p>
-                    <p><span class="lang-label">JP</span> スクリプトを保存したフォルダでターミナルを開き、コマンドを実行してください。</p>
+                    <p><span class="lang-label">TH</span> เปิด Terminal ในโฟลเดอร์ที่โหลดสคริปต์ไว้ แล้วรันคำสั่งเพื่อแตกไฟล์และสร้าง Prefix</p>
+                    <p><span class="lang-label">EN</span> Open terminal in the download folder and run the command to extract files and create prefix.</p>
+                    <p><span class="lang-label">JP</span> スクリプトフォルダでターミナルを開き、コマンドを実行してPrefixを作成します。</p>
                     <div class="cmd-box">
                         chmod +x installmmd64.sh <br>
                         ./installmmd64.sh
@@ -98,36 +98,56 @@
                 </div>
 
                 <div class="bg-black/40 p-4 border-l-2 border-white">
-                    <p class="font-bold text-[#f97316] uppercase mb-2">2. Lutris & Wine Configuration (HACKER STYLE)</p>
-                    <ul class="space-y-4">
-                        <li>
-                            <span class="lang-label">TH</span> ไปที่เมนู <span class="highlight-orange">Configure</span> > <span class="highlight-orange">Runner options</span> ใน Lutris
-                        </li>
-                        <li>
-                            <span class="lang-label">EN</span> Go to <span class="highlight-orange">Configure</span> > <span class="highlight-orange">Runner options</span> in Lutris.
-                        </li>
-                        <li>
-                            <span class="lang-label">JP</span> Lutrisの <span class="highlight-orange">Configure</span> > <span class="highlight-orange">Runner options</span> に移動します。
-                        </li>
-                        <li class="bg-orange-600/10 p-3 border border-orange-600/50">
-                            <p class="text-white font-bold mb-1 underline">🚨 CRITICAL STEP / 重要 / ขั้นตอนสำคัญ:</p>
+                    <p class="font-bold text-[#f97316] uppercase mb-4 underline italic">2. Lutris App Setup (Step-by-Step)</p>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-white font-bold mb-1">A. Add Game / アプリの追加:</p>
                             <p class="text-xs">
-                                <span class="lang-label">TH</span> ในช่อง <span class="highlight-orange">Wine version</span> **ห้ามเลือก (Default)** ให้เลือกเป็น <span class="highlight-orange">Wine (Staging) 11.x - HQ</span> หรือเวอร์ชั่นที่ใหม่กว่าเท่านั้น!
+                                <span class="lang-label">TH</span> กดปุ่ม <span class="highlight-orange">+</span> ใน Lutris > เลือก <span class="highlight-orange">Add locally installed game</span> > ตั้งชื่อเกม > เลือก Runner เป็น <span class="highlight-orange">Wine</span>
                             </p>
-                            <p class="text-xs mt-2">
-                                <span class="lang-label">EN</span> Under <span class="highlight-orange">Wine version</span>, **DO NOT select (Default)**. You must choose <span class="highlight-orange">Wine (Staging) 11.x - HQ</span> or a newer version.
+                            <p class="text-xs mt-1">
+                                <span class="lang-label">EN</span> Click <span class="highlight-orange">+</span> > <span class="highlight-orange">Add locally installed game</span> > Name your game > Set Runner to <span class="highlight-orange">Wine</span>.
                             </p>
-                            <p class="text-xs mt-2">
-                                <span class="lang-label">JP</span> <span class="highlight-orange">Wine version</span> の項目で **(Default) を選択しないでください**。必ず <span class="highlight-orange">Wine (Staging) 11.x - HQ</span> またはそれ以降のバージョンを選択してください。
+                            <p class="text-xs mt-1">
+                                <span class="lang-label">JP</span> <span class="highlight-orange">+</span> を押す > <span class="highlight-orange">Add locally installed game</span> を選択 > 名前入力 > Runnerを <span class="highlight-orange">Wine</span> に設定。
                             </p>
-                        </li>
-                        <li>
-                            <span class="lang-label">TH</span> ตั้งค่า Wine Prefix ไปที่ <code>~/.WineMMD64</code> และเลือกโฟลเดอร์หลัก <code>MikuMikuDance_V932x64</code>
-                        </li>
-                        <li>
-                            <span class="lang-label">EN</span> Set Wine prefix to <code>~/.WineMMD64</code> and point to <code>MikuMikuDance_V932x64</code> folder.
-                        </li>
-                    </ul>
+                        </div>
+
+                        <div class="bg-[#1a1a1a] p-3 border border-gray-800">
+                            <p class="text-white font-bold mb-2 text-xs uppercase underline">B. Game Options / ゲームオプション:</p>
+                            <ul class="space-y-3 text-[11px] mono">
+                                <li>
+                                    <span class="text-[#f97316]">[Executable]</span><br>
+                                    TH: เลือกไฟล์ <span class="text-white">MikuMikuDance.exe</span> ในโฟลเดอร์ MMD<br>
+                                    JP: <span class="text-white">MikuMikuDance.exe</span> ファイルを選択。
+                                </li>
+                                <li>
+                                    <span class="text-[#f97316]">[Working directory]</span><br>
+                                    TH: เลือกโฟลเดอร์หลักของ <span class="text-white">MikuMikuDance</span><br>
+                                    JP: <span class="text-white">MikuMikuDance</span> のメインフォルダを選択。
+                                </li>
+                                <li>
+                                    <span class="text-[#f97316]">[Wine prefix]</span><br>
+                                    TH: เลือกโฟลเดอร์ <span class="text-white">.WineMMD64</span> (ที่รันแตกออกมาจากสคริปต์)<br>
+                                    JP: スクリプトで作成された <span class="text-white">.WineMMD64</span> フォルダを選択。
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-orange-600/10 p-4 border border-orange-600/50">
+                            <p class="text-white font-bold mb-1 underline">🚨 RUNNER OPTIONS (CRITICAL):</p>
+                            <p class="text-xs leading-relaxed">
+                                <span class="lang-label">TH</span> ในช่อง <span class="highlight-orange">Wine version</span> **ห้ามเลือก (Default)** ให้เจาะจงเลือกเป็น <span class="highlight-orange font-black underline">WineHQ Staging 11.4</span>
+                            </p>
+                            <p class="text-xs mt-2 leading-relaxed">
+                                <span class="lang-label">EN</span> For <span class="highlight-orange">Wine version</span>, **DO NOT select (Default)**. Specifically choose <span class="highlight-orange font-black underline">WineHQ Staging 11.4</span>.
+                            </p>
+                            <p class="text-xs mt-2 leading-relaxed">
+                                <span class="lang-label">JP</span> <span class="highlight-orange">Wine version</span> 項目で **(Default) を選択しないでください**。必ず <span class="highlight-orange font-black underline">WineHQ Staging 11.4</span> を指定してください。
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -168,5 +188,5 @@
     </footer>
 
 </body>
-</html>
-
+                       </html>
+                       
