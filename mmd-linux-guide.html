@@ -14,13 +14,13 @@
         .cmd-box { background: #000; padding: 15px; border: 1px solid #333; color: #f97316; font-family: 'JetBrains Mono', monospace; margin: 12px 0; position: relative; font-size: 14px; line-height: 1.6; }
         .cmd-box::before { content: "TERMINAL_CMD"; position: absolute; top: -10px; right: 10px; background: #333; color: #aaa; font-size: 10px; padding: 0 5px; }
         .highlight-orange { color: #f97316; font-weight: bold; }
-        .section-divider { border-top: 2px dashed #333; margin: 60px 0; position: relative; }
-        .section-divider::after { content: "NEXT_MODULE"; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #0a0a0a; padding: 0 15px; color: #f97316; font-size: 12px; font-weight: bold; }
+        .btn-download { background: #1a1a1a; border: 1px solid #f97316; padding: 10px; text-align: center; font-weight: bold; font-size: 13px; transition: all 0.3s; }
+        .btn-download:hover { background: #f97316; color: black; transform: translateY(-2px); }
     </style>
 </head>
 <body class="pb-20">
 
-    <header class="p-6 border-b-2 border-[#f97316] flex justify-between items-center bg-black/50 sticky top-0 z-50 backdrop-blur-md">
+    <header class="p-6 border-b-2 border-[#f97316] flex justify-between items-center bg-black/50 sticky top-0 z-50 backdrop-blur-md text-white">
         <a href="index.html" class="text-[#f97316] font-bold underline italic hover:text-white transition-all tracking-tighter">< BACK TO HOME</a>
         <div class="mono text-xs text-gray-500 uppercase font-bold">Project: MMD_PMX_LINUX_DEPLOY_2026</div>
     </header>
@@ -29,19 +29,41 @@
         
         <div class="mb-12">
             <h1 class="text-4xl font-black text-[#f97316] italic mb-4 uppercase tracking-tight">MMD & PMX Editor Linux Setup</h1>
-            <div class="space-y-3 text-sm border-l-2 border-gray-800 pl-4">
-                <p><span class="lang-label">TH</span> คู่มือการลง MMD และ PMX Editor สำหรับ Ubuntu 24.04.3 LTS, ZorinOS 18 และ Linux Mint 22.3+</p>
-                <p><span class="lang-label">EN</span> Full installation guide for MMD & PMX Editor on modern Ubuntu-based systems.</p>
-                <p><span class="lang-label">JP</span> Linux（ZorinOS/Ubuntu）環境でMMDとPMX Editorをセットアップする完全ガイド。</p>
+            <div class="space-y-3 text-sm border-l-2 border-gray-800 pl-4 text-gray-400">
+                <p><span class="lang-label">TH</span> คู่มือการลง MMD และ PMX Editor สำหรับ Ubuntu / ZorinOS แบบละเอียด</p>
+                <p><span class="lang-label">EN</span> Detailed MMD & PMX Editor installation for Ubuntu-based Linux.</p>
+                <p><span class="lang-label">JP</span> LinuxでMMDとPMX Editorをセットアップするための完全ガイド。</p>
             </div>
         </div>
 
-        <div class="bg-red-900/10 border-2 border-red-600 p-6 mb-10 rounded-lg">
-            <h3 class="font-bold text-red-500 mb-2 underline italic">⚠️ CRITICAL NOTICE / 重要事項 / ข้อควรระวัง</h3>
-            <div class="text-sm space-y-2 text-red-200/80 italic">
-                <p>(TH) MMD 64-bit ไม่รองรับการแตกไฟล์ขณะเรนเดอร์ แนะนำให้ใช้ Avi Raw หรือ MJPEG เท่านั้น!</p>
-                <p>(JP) 64bit版はAVI圧縮に対応していません。Avi RawまたはMJPEGを使用してください。</p>
+        <div class="step-card border-white/20 mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="bg-white text-black font-black px-2 py-1 italic underline">REQUIRED SOFTWARE</span>
             </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="space-y-3">
+                    <h3 class="text-white font-bold border-b border-gray-700 pb-2 italic uppercase">MikuMikuDance V932</h3>
+                    <div class="flex flex-col gap-2">
+                        <a href="https://learnmmd.com/MikuMikuDanceE_v932x64.zip" class="btn-download">64-Bit (ZIP)</a>
+                        <a href="https://learnmmd.com/MikuMikuDanceE_v932.zip" class="btn-download text-gray-400 border-gray-600">32-Bit (ZIP)</a>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <h3 class="text-white font-bold border-b border-gray-700 pb-2 italic uppercase">PMXEditor 0254f</h3>
+                    <div class="flex flex-col gap-2 h-full">
+                        <a href="https://www.deviantart.com/inochi-pm/art/PmxEditor-vr-0254f-English-Version-v2-0-766313588" target="_blank" class="btn-download h-full flex items-center justify-center">English Ver. (DeviantArt)</a>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <h3 class="text-white font-bold border-b border-gray-700 pb-2 italic uppercase">MikuMikuEffect V037</h3>
+                    <div class="flex flex-col gap-2">
+                        <a href="https://learnmmd.com/MMEffect_v037x64_English.zip" class="btn-download">64-Bit (MME)</a>
+                        <a href="https://learnmmd.com/MMEffect_v037_English.zip" class="btn-download text-gray-400 border-gray-600">32-Bit (MME)</a>
+                    </div>
+                </div>
+            </div>
+            <p class="mt-6 text-[11px] text-gray-500 italic mono uppercase tracking-widest text-center">** Note: External download links from LearnMMD & DeviantArt **</p>
         </div>
 
         <div class="step-card">
@@ -49,7 +71,7 @@
                 <span class="bg-[#f97316] text-black font-black px-2 py-1">01</span>
                 <h2 class="text-2xl font-bold text-white uppercase italic">Initial Environment Setup</h2>
             </div>
-            <img src="bg1.png" class="w-full h-auto mb-6 border border-gray-800 rounded">
+            <img src="bg1.png" class="w-full h-auto mb-6 border border-gray-800 rounded grayscale opacity-70 hover:opacity-100 transition-all">
             <div class="cmd-box">
                 sudo dpkg --add-architecture i386 <br>
                 sudo mkdir -pm 755 /etc/apt/keyrings <br>
@@ -62,70 +84,59 @@
         <div class="step-card">
             <div class="flex items-center gap-3 mb-4">
                 <span class="bg-[#f97316] text-black font-black px-2 py-1">02</span>
-                <h2 class="text-2xl font-bold text-white uppercase italic">MMD 64-bit Installation</h2>
+                <h2 class="text-2xl font-bold text-white uppercase italic">Linux Automation Scripts</h2>
             </div>
-            <p class="text-sm mb-4"><span class="lang-label">TH</span> ดาวน์โหลดและรันสคริปต์ <code>installmmd64.sh</code></p>
-            <a href="installmmd64.sh" download class="inline-block bg-[#f97316] text-black font-black px-6 py-3 mb-4 hover:bg-white transition-all">DOWNLOAD installmmd64.sh</a>
-            <div class="cmd-box">
-                chmod +x installmmd64.sh && ./installmmd64.sh
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <a href="installmmd64.sh" download class="bg-[#1a1a1a] border-l-4 border-[#f97316] p-4 font-bold hover:bg-[#222] transition-all text-sm uppercase">DOWNLOAD: installmmd64.sh</a>
+                <a href="installPMXEditor.sh" download class="bg-[#1a1a1a] border-l-4 border-[#f97316] p-4 font-bold hover:bg-[#222] transition-all text-sm uppercase">DOWNLOAD: installPMXEditor.sh</a>
             </div>
-            <div class="bg-black/40 p-4 border-l-2 border-white mt-4 text-xs space-y-2">
-                <p class="font-bold text-[#f97316] uppercase">[Lutris Config]</p>
-                <p>1. <strong>Executable:</strong> MikuMikuDance.exe</p>
-                <p>2. <strong>Working Directory:</strong> Folder MikuMikuDance</p>
-                <p>3. <strong>Wine Prefix:</strong> .WineMMD64</p>
-                <p>4. <strong>Wine Version:</strong> <span class="highlight-orange">WineHQ Staging 11.4</span> (ห้ามเลือก Default!)</p>
-            </div>
+            <p class="text-[11px] text-gray-500 px-2 italic">(TH) โหลดสคริปต์ทั้งคู่ไปวางในโฟลเดอร์เดียวกับโปรแกรมที่โหลดมาด้านบน / (JP) 同じフォルダに保存してください。</p>
         </div>
 
-        <div class="section-divider"></div>
-
-        <div class="step-card border-[#f97316]">
+        <div class="step-card border-orange-500">
             <div class="flex items-center gap-3 mb-4">
                 <span class="bg-[#f97316] text-black font-black px-2 py-1">03</span>
-                <h2 class="text-2xl font-bold text-white uppercase italic">PMX Editor Installation</h2>
+                <h2 class="text-2xl font-bold text-white uppercase italic">Execute & Lutris Configuration</h2>
             </div>
-            <img src="pmx1.png" class="w-full h-auto mb-6 border border-gray-800 rounded">
-            
-            <div class="space-y-4 mb-6">
-                <p><span class="lang-label">TH</span> ดาวน์โหลดสคริปต์ <code>installPMXEditor.sh</code> เพื่อเตรียมสภาพแวดล้อมสำหรับ PMX Editor</p>
-                <p><span class="lang-label">JP</span> PMX Editor用のインストールスクリプト <code>installPMXEditor.sh</code> をダウンロードします。</p>
-            </div>
-
-            <a href="installPMXEditor.sh" download class="inline-block bg-[#f97316] text-black font-black px-6 py-3 mb-4 hover:bg-white transition-all shadow-[5px_5px_0px_white]">
-                DOWNLOAD installPMXEditor.sh
-            </a>
-
-            <div class="cmd-box">
-                chmod +x installPMXEditor.sh <br>
-                ./installPMXEditor.sh
+            <img src="bg2.png" class="w-full h-auto mb-6 border border-gray-800 rounded">
+            <div class="space-y-6">
+                <div class="cmd-box">
+                    chmod +x *.sh <br>
+                    ./installmmd64.sh <br>
+                    ./installPMXEditor.sh
+                </div>
+                <div class="bg-black/40 p-5 border-l-2 border-white space-y-4">
+                    <p class="text-[#f97316] font-bold text-xs underline uppercase italic">Path Mapping / パス設定:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-[11px] mono">
+                        <div class="space-y-2">
+                            <p class="text-white font-bold">[ MikuMikuDance ]</p>
+                            <p>> Executable: MikuMikuDance.exe</p>
+                            <p>> Prefix: .WineMMD64</p>
+                        </div>
+                        <div class="space-y-2">
+                            <p class="text-white font-bold">[ PMX Editor ]</p>
+                            <p>> Executable: PMXEditor.exe</p>
+                            <p>> Prefix: .WinePMX</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-orange-600/10 p-4 border border-orange-600/50">
+                    <p class="text-white font-bold mb-1 underline uppercase italic">Runner Options:</p>
+                    <p class="text-xs">
+                        <span class="lang-label">TH</span> เลือก <span class="highlight-orange">Wine version</span> เป็น <span class="highlight-orange font-black underline">WineHQ Staging 11.4</span> เท่านั้น! ห้ามเลือก (Default)
+                    </p>
+                </div>
             </div>
         </div>
 
         <div class="step-card">
             <div class="flex items-center gap-3 mb-4">
                 <span class="bg-[#f97316] text-black font-black px-2 py-1">04</span>
-                <h2 class="text-2xl font-bold text-white uppercase italic">Lutris Config for PMX</h2>
+                <h2 class="text-2xl font-bold text-white uppercase italic">MikuMikuEffect (MME) Injection</h2>
             </div>
-            <img src="pmx2.png" class="w-full h-auto mb-6 border border-gray-800 rounded">
-            
-            <div class="bg-[#1a1a1a] p-5 border-l-4 border-white space-y-6">
-                <div class="space-y-3 text-xs mono">
-                    <p class="text-[#f97316] font-bold uppercase underline italic">Lutris Settings / 設定:</p>
-                    <p>> [Executable]: <span class="text-white font-bold">PMXEditor.exe</span></p>
-                    <p>> [Working directory]: <span class="text-white font-bold">โฟลเดอร์หลักของ PMXEditor</span></p>
-                    <p>> [Wine prefix]: <span class="text-white font-bold">.WinePMX</span> (แตกมาจากสคริปต์)</p>
-                </div>
-
-                <div class="bg-orange-600/10 p-4 border border-orange-600/50">
-                    <p class="text-white font-bold mb-2 underline uppercase">🚨 Compatibility / 互換性:</p>
-                    <p class="text-[12px] leading-relaxed">
-                        <span class="lang-label">TH</span> ในหน้า Configure > Runner options เลือก <span class="highlight-orange">Wine version</span> เป็น <span class="highlight-orange font-black underline">WineHQ Staging 11.4</span> เท่านั้น! **ห้ามใช้ตัว (Default)**
-                    </p>
-                    <p class="text-[12px] mt-2 leading-relaxed">
-                        <span class="lang-label">JP</span> Runner optionsの <span class="highlight-orange">Wine version</span> で必ず <span class="highlight-orange font-black underline">WineHQ Staging 11.4</span> を選択してください。**(Default) は使用禁止**。
-                    </p>
-                </div>
+            <div class="space-y-4 text-sm">
+                <p><span class="lang-label">TH</span> ก๊อปปี้ไฟล์ <code class="text-[#f97316] font-bold underline italic">d3d9.dll</code> และ <code class="text-white">MMEffect.dll</code> จากไฟล์ที่โหลดมาไปใส่ใน Folder MikuMikuDance</p>
+                <p><span class="lang-label">JP</span> <code class="text-[#f97316] font-bold underline italic">d3d9.dll</code> と <code class="text-white">MMEffect.dll</code> を MikuMikuDance フォルダにコピーします。</p>
             </div>
         </div>
 
@@ -134,18 +145,16 @@
                 <span class="bg-[#f97316] text-black font-black px-2 py-1">05</span>
                 <h2 class="text-2xl font-bold text-white uppercase italic">FFmpeg Video Engine</h2>
             </div>
-            <div class="cmd-box">
-                sudo apt install ffmpeg -y
-            </div>
-            <p class="text-[10px] text-gray-500 italic mt-2">Convert AVI to MP4: ffmpeg -i input.avi -vcodec libx264 -crf 18 output.mp4</p>
+            <div class="cmd-box">sudo apt install ffmpeg -y</div>
+            <p class="text-[11px] text-gray-500 italic mt-2">Conversion: ffmpeg -i input.avi -vcodec libx264 -crf 18 output.mp4</p>
         </div>
 
     </main>
 
-    <footer class="text-center p-10 mono text-[10px] text-gray-600 border-t border-gray-900 mt-20">
-        AUTHOR: MAKA // SYSTEM: ZORINOS_18_CORE // 2026 // BELOBOG INDUSTRIES
+    <footer class="text-center p-10 mono text-[10px] text-gray-700 border-t border-gray-900 mt-20 italic">
+        MAKANEMA_SYS // ZORINOS_18 // 2026 // BELOBOG INDUSTRIES
     </footer>
 
 </body>
-        </html>
-            
+    </html>
+    
